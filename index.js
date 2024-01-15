@@ -12,7 +12,7 @@ search.addEventListener('click', () => {
     if (city === '')
         return;
 
-    fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&appid=${APIKey}`)
+        fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${APIKey}`)
         .then(response => response.json())
         .then(json => {
 
@@ -34,7 +34,7 @@ search.addEventListener('click', () => {
             const humidity = document.querySelector('.weather-details .humidity span');
             const wind = document.querySelector('.weather-details .wind span');
 
-            switch (json.weather[0].main) {
+            switch (json.weather[0].main){
                 case 'Clear':
                     image.src = 'assets/clear.png';
                     break;
@@ -56,13 +56,13 @@ search.addEventListener('click', () => {
                     break;
 
                 default:
-                    image.src = '';
+                  image.src = '';  
             }
 
-            temperature.innerHTML = `${parseInt(json.main.temp)}<span>°F</span>`;
+            temperature.innerHTML = `${parseInt(json.main.temp)}<span>°C</span>`;
             description.innerHTML = `${json.weather[0].description}`;
             humidity.innerHTML = `${json.main.humidity}%`;
-            wind.innerHTML = `${parseInt(json.wind.speed)}mph`;
+            wind.innerHTML = `${parseInt(json.wind.speed)}Km/h`;
 
             weatherBox.style.display = '';
             weatherDetails.style.display = '';
