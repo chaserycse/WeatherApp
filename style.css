@@ -250,7 +250,3 @@ body{
     text-align: center;
     color: white;
   }
-
-  .switchOver {
-    transition: all 0.3s;
-  }
