@@ -48,6 +48,10 @@ function Imperial() {
         const imageUrl = imageMapping[json.weather[0].main] || imageMapping['default'];
         image.src = imageUrl ? `assets/${imageUrl}` : '';
 
+        if (imageMapping[json.weather[0].main]='Rain'){
+            toggleRain();
+        }
+
         temperature.innerHTML = `${parseInt(json.main.temp)}<span>${unitsCheckbox.checked ? '°C' : '°F'}</span>`;
         description.innerHTML = `${json.weather[0].description}`;
         humidity.innerHTML = `${json.main.humidity}%`;
@@ -76,4 +80,14 @@ function Imperial() {
             .then(handleApiResponse);
         }
     });
+}
+
+function toggleSnow(){
+    let element = document.body;
+    element.classList.toggle("snow");
+}
+
+function toggleRain(){
+    let element = document.body;
+    element.classList.toggle("rain");
 }
