@@ -77,9 +77,3 @@ function Imperial() {
         }
     });
 }
-
-RainBackground(){
-    let element = document.body;
-    element.classList.toggle("rain");
-}
-}
