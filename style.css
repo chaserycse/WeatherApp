@@ -251,3 +251,7 @@ body{
     text-align: center;
     color: white;
   }
+
+  .rain{
+    background-image: 'snow.gif';
+  }
