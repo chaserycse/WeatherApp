@@ -267,3 +267,8 @@ body{
     background: url(mist.gif);
     background-size: cover;
   }
+
+  .clouds {
+    background: url(clouds.gif);
+    background-size: cover;
+  }
