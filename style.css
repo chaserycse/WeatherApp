@@ -256,11 +256,14 @@ body{
   .snow {
     background: url(snow.gif);
     background-size: cover;
-    animation:ease-in-out 3s;
   }
 
   .rain {
     background: url(rain.gif);
     background-size: cover;
-    animation: ease-in-out 3s;
+  }
+
+  .mist {
+    background: url(mist.gif);
+    background-size: cover;
   }

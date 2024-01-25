@@ -28,6 +28,7 @@ function Imperial() {
     }
 
     function handleNotFoundError() {
+        resetUI();
         container.style.height = '400px';
         weatherBox.style.display = 'none';
         weatherDetails.style.display = 'none';
@@ -36,6 +37,7 @@ function Imperial() {
     }
 
     function handleWeatherData(json) {
+        resetUI();
         error404.style.display = 'none';
         error404.classList.remove('fadeIn');
 
@@ -48,9 +50,7 @@ function Imperial() {
         const imageUrl = imageMapping[json.weather[0].main] || imageMapping['default'];
         image.src = imageUrl ? `assets/${imageUrl}` : '';
 
-        if (imageMapping[json.weather[0].main]='Rain'){
-            toggleRain();
-        }
+        toggleBackground(json.weather[0].main);
 
         temperature.innerHTML = `${parseInt(json.main.temp)}<span>${unitsCheckbox.checked ? '°C' : '°F'}</span>`;
         description.innerHTML = `${json.weather[0].description}`;
@@ -63,6 +63,13 @@ function Imperial() {
         weatherDetails.classList.add('fadeIn');
         container.style.height = '590px';
     }
+    function resetUI() {
+        error404.style.display = 'none';
+        error404.classList.remove('fadeIn');
+
+        document.body.classList.remove('snow', 'rain', 'mist', 'body');
+    }
+
 
     searchButton.addEventListener('click', () => {
         const APIKey = '6c0935cd403541025c7c59bdce8b79d1';
@@ -82,12 +89,15 @@ function Imperial() {
     });
 }
 
-function toggleSnow(){
+function toggleBackground(x){
     let element = document.body;
+    if (x==='Snow'){
     element.classList.toggle("snow");
-}
-
-function toggleRain(){
-    let element = document.body;
-    element.classList.toggle("rain");
+    } else if (x==='Rain'){
+        element.classList.toggle("rain");
+    } else if (x==='Mist'){
+        element.classList.toggle("mist");
+    } else if (x==='default'){
+        element.classList.toggle("body");
+    }
 }
