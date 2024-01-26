@@ -67,7 +67,7 @@ function Imperial() {
         const APIKey = '6c0935cd403541025c7c59bdce8b79d1';
         const city = searchInput.value;
 
-        if (city === '') return;
+        if (city === '') return weatherBox.classList.remove('fadeIn'),weatherDetails.classList.remove('fadeIn'),container.style.height = '105px',resetBackground(); 
 
         if (document.getElementById('units').checked){
         fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${APIKey}`)
@@ -100,3 +100,4 @@ function toggleBackground(x){
     element.classList.toggle("body");
     }
 }
+
